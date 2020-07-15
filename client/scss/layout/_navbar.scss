@@ -1,0 +1,9 @@
+.navbar {
+  @include baseFlexBox;
+
+  .navbar-logo {
+    img {
+      width: 60px;
+    }
+  }
+}
