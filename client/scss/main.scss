@@ -1,5 +1,7 @@
 @import "./abstracts/variables";
 @import "./abstracts/mixins";
+@import "./helpers/colors";
+@import "./helpers/layout";
 @import "app";
 @import "./layout/navbar";
-@import "./mobile/mobile";
+@import "./layout/image";

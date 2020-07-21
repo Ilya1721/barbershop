@@ -1,9 +1,16 @@
-@mixin baseContainer {
-  max-width: 1100px;
-  width: 100%;
-  margin: auto;
-}
 @mixin baseFlexBox {
   display: flex;
   justify-content: space-between;
+}
+@mixin baseLink {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.2em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+@mixin baseContainer {
+  padding: 20px;
 }
