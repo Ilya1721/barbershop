@@ -11,7 +11,7 @@
     &:checked ~ .menu {
       display: flex;
       flex-direction: column;
-      max-height: 250px;
+      max-height: 300px;
     }
 
     &:checked ~ .gamburger .menu-icon .navicon::before {
@@ -94,6 +94,10 @@
     font-size: 1.2em;
   }
 
+  .active {
+    text-decoration: underline;
+  }
+
   a,
   label {
     -webkit-tap-highlight-color: transparent;
@@ -114,8 +118,10 @@
     }
   }
 }
-@media(min-width: 48em) {
+@media(min-width: 900px) {
   .navbar {
+    flex-wrap: nowrap;
+
     a {
       display: block;
 
@@ -135,9 +141,10 @@
       flex-direction: row;
       margin-right: 150px;
       margin-top: 23px;
+      max-height: none;
 
       a {
-        margin-right: 15px;
+        width: auto;
 
         &:hover {
           background: transparent;

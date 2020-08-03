@@ -1,0 +1,87 @@
+.services {
+  background: #10100e;
+  color: #fff;
+  text-align: center;
+
+  h3 {
+    @include baseH3;
+  }
+
+  .moustaches {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+
+    img {
+      padding: 0 25px;
+    }
+  }
+
+  .moustaches::after,
+  .moustaches::before {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: $border-color;
+  }
+
+  .services-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .list-item {
+      display: flex;
+      font-size: 1.2em;
+      padding-bottom: 15px;
+      width: 75%;
+      justify-content: space-between;
+      margin: auto;
+
+      .price {
+        color: $border-color;
+      }
+    }
+  }
+}
+@media(min-width: 900px) {
+  .services {
+    .moustaches::after,
+    .moustaches::before {
+      content: "";
+      display: block;
+      width: 200px;
+      height: 2px;
+      background: $border-color;
+    }
+
+    .services-container {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 50%;
+      margin: auto;
+      flex-wrap: wrap;
+
+      .left-list {
+        border-right: 3px solid $border-color;
+        padding-right: 75px;
+      }
+
+      .left-list,
+      .right-list {
+        padding-top: 25px;
+      }
+
+      .list-item {
+        width: 100%;
+        padding-bottom: 30px;
+
+        .name {
+          margin-right: 100px;
+        }
+      }
+    }
+  }
+}

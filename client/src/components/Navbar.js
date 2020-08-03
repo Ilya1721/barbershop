@@ -5,10 +5,10 @@ const Navbar = (props) => {
   return (
     <div className="navbar">
       <div className="logo">
-        <a href="#">
+        <a href="/">
           <img src={logo} alt="logo" />
         </a>
-        <a>Khmelnitskiy Barbershop</a>
+        <a href="/">Khmelnitskiy Barbershop</a>
       </div>
       <input className="menu-btn" type="checkbox" id="menu-btn" />
       <div className="gamburger">
@@ -17,10 +17,11 @@ const Navbar = (props) => {
         </label>
       </div>
       <div className="menu">
-        <a href="#">Ціни</a>
-        <a href="#">Перукарі</a>
-        <a href="#">Контакти</a>
-        <a href="#">Записатися</a>
+        <a href="#services">Послуги</a>
+        <a href="#works">Наші роботи</a>
+        <a href="#barbers">Перукарі</a>
+        <a href="#contacts">Контакти</a>
+        <a href="#register">Записатися</a>
       </div>
     </div>
   );

@@ -29,7 +29,7 @@ body {
     .navbar .menu-btn:checked ~ .menu {
       display: flex;
       flex-direction: column;
-      max-height: 250px; }
+      max-height: 300px; }
     .navbar .menu-btn:checked ~ .gamburger .menu-icon .navicon::before {
       transform: rotate(-45deg); }
     .navbar .menu-btn:checked ~ .gamburger .menu-icon .navicon::after {
@@ -80,6 +80,8 @@ body {
     text-decoration: none;
     cursor: pointer;
     font-size: 1.2em; }
+  .navbar .active {
+    text-decoration: underline; }
   .navbar a,
   .navbar label {
     -webkit-tap-highlight-color: transparent; }
@@ -93,31 +95,279 @@ body {
       width: 65px;
       margin-right: 25px; }
 
-@media (min-width: 48em) {
-  .navbar a {
-    display: block; }
-    .navbar a:hover {
+@media (min-width: 900px) {
+  .navbar {
+    flex-wrap: nowrap; }
+    .navbar a {
+      display: block; }
+      .navbar a:hover {
+        text-decoration: underline; }
+    .navbar .logo {
+      margin-left: 150px;
+      width: auto; }
+    .navbar .menu {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      margin-right: 150px;
+      margin-top: 23px;
+      max-height: none; }
+      .navbar .menu a {
+        width: auto; }
+        .navbar .menu a:hover {
+          background: transparent; }
+    .navbar .menu-icon {
+      display: none; } }
+
+.image {
+  background-image: url("../images/barbershop_image.jpg");
+  background-size: cover;
+  min-height: 500px; }
+
+.overlay {
+  background: rgba(0, 0, 0, 0.6);
+  min-height: 500px; }
+
+.opening {
+  padding-top: 70px;
+  text-align: center;
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold; }
+
+.subscribe {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center; }
+  .subscribe .subscribe-btn {
+    display: block;
+    background: #ffbd00;
+    padding: 15px 20px;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: none; }
+    .subscribe .subscribe-btn:hover {
       text-decoration: underline; }
-  .navbar .logo {
-    margin-left: 150px;
-    width: auto; }
-  .navbar .menu {
-    display: flex;
-    justify-content: space-between;
+
+.contacts {
+  background: rgba(0, 0, 0, 0.4);
+  height: 150px;
+  width: auto;
+  height: 220px;
+  padding: 20px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  color: #fff; }
+  .contacts img {
+    width: 25px;
+    margin-right: 10px; }
+  .contacts .social img {
+    width: 30px; }
+
+@media (min-width: 900px) {
+  .image {
+    min-height: 700px; }
+  .opening {
+    width: 60%;
+    margin: auto; }
+  .overlay {
+    min-height: 700px;
+    font-size: 1.3em; }
+  .subscribe .subscribe-btn {
+    width: 300px; }
+  .contacts {
+    width: auto;
+    height: 100px;
+    flex-wrap: wrap;
     flex-direction: row;
-    margin-right: 150px;
-    margin-top: 23px; }
-    .navbar .menu a {
-      margin-right: 15px; }
-      .navbar .menu a:hover {
-        background: transparent; }
-  .navbar .menu-icon {
-    display: none; } }
+    justify-content: center; }
+    .contacts div {
+      margin-right: 45px; } }
 
-.image img {
-  width: 100%;
-  height: 500px; }
+.services {
+  background: #10100e;
+  color: #fff;
+  text-align: center; }
+  .services h3 {
+    margin: 0;
+    font-size: 2.5em;
+    padding: 25px; }
+  .services .moustaches {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px; }
+    .services .moustaches img {
+      padding: 0 25px; }
+  .services .moustaches::after,
+  .services .moustaches::before {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: #937966; }
+  .services .services-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+    .services .services-container .list-item {
+      display: flex;
+      font-size: 1.2em;
+      padding-bottom: 15px;
+      width: 75%;
+      justify-content: space-between;
+      margin: auto; }
+      .services .services-container .list-item .price {
+        color: #937966; }
 
-@media (min-width: 48em) {
-  .image img {
-    height: auto; } }
+@media (min-width: 900px) {
+  .services .moustaches::after,
+  .services .moustaches::before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 2px;
+    background: #937966; }
+  .services .services-container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    flex-wrap: wrap; }
+    .services .services-container .left-list {
+      border-right: 3px solid #937966;
+      padding-right: 75px; }
+    .services .services-container .left-list,
+    .services .services-container .right-list {
+      padding-top: 25px; }
+    .services .services-container .list-item {
+      width: 100%;
+      padding-bottom: 30px; }
+      .services .services-container .list-item .name {
+        margin-right: 100px; } }
+
+.works {
+  background: #10100e;
+  padding-top: 100px;
+  color: #fff;
+  padding-bottom: 25px; }
+  .works h3 {
+    margin: 0;
+    font-size: 2.5em;
+    padding: 25px;
+    display: block;
+    border-top: 2px solid #937966;
+    border-bottom: 2px solid #937966;
+    width: 50%;
+    margin: auto;
+    text-align: center; }
+  .works .photos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px; }
+    .works .photos img {
+      width: 50%; }
+
+@media (min-width: 900px) {
+  .works .photos img {
+    width: 25%; } }
+
+.barbers {
+  background: #10100e;
+  color: #fff;
+  text-align: center; }
+  .barbers h3 {
+    margin: 0;
+    font-size: 2.5em;
+    padding: 25px; }
+  .barbers .moustaches {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px; }
+    .barbers .moustaches img {
+      padding: 0 25px; }
+  .barbers .moustaches::after,
+  .barbers .moustaches::before {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: #937966; }
+  .barbers .barbers-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px; }
+    .barbers .barbers-container .main-img {
+      display: block;
+      width: 100%;
+      border: 2px solid #937966;
+      padding: 5px; }
+    .barbers .barbers-container p {
+      margin: 0;
+      padding: 0;
+      font-size: 1.1em; }
+    .barbers .barbers-container h5 {
+      font-size: 1.4em;
+      margin: 15px 0; }
+    .barbers .barbers-container .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: auto;
+      padding-bottom: 20px; }
+      .barbers .barbers-container .buttons img {
+        width: 49%;
+        border-radius: 50%; }
+      .barbers .barbers-container .buttons .select-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%; }
+    .barbers .barbers-container .description {
+      text-align: left; }
+      .barbers .barbers-container .description .subscribe-btn {
+        color: #fff;
+        text-decoration: none;
+        border: 2px solid #937966;
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        padding: 15px 0; }
+        .barbers .barbers-container .description .subscribe-btn:hover {
+          text-decoration: underline; }
+        .barbers .barbers-container .description .subscribe-btn:focus {
+          outline: none; }
+    .barbers .barbers-container .selected {
+      border: 2px solid #937966; }
+
+@media (min-width: 900px) {
+  .barbers .moustaches::after,
+  .barbers .moustaches::before {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 2px;
+    background: #937966; }
+  .barbers .barbers-container {
+    flex-direction: row;
+    align-content: center;
+    width: 75%;
+    margin: auto; }
+    .barbers .barbers-container .main-img {
+      width: 600px;
+      margin-right: 50px;
+      margin-left: 25px; }
+    .barbers .barbers-container .buttons {
+      flex-direction: column;
+      align-content: center; }
+      .barbers .barbers-container .buttons img {
+        width: 150px;
+        margin-bottom: 10px; }
+    .barbers .barbers-container .description {
+      width: 400px; } }

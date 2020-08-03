@@ -1,0 +1,35 @@
+.works {
+  background: #10100e;
+  padding-top: 100px;
+  color: #fff;
+  padding-bottom: 25px;
+
+  h3 {
+    @include baseH3;
+    display: block;
+    border-top: 2px solid $border-color;
+    border-bottom: 2px solid $border-color;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .photos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+
+    img {
+      width: 50%;
+    }
+  }
+}
+@media(min-width: 900px) {
+  .works {
+    .photos {
+      img {
+        width: 25%;
+      }
+    }
+  }
+}

@@ -14,3 +14,8 @@
 @mixin baseContainer {
   padding: 20px;
 }
+@mixin baseH3 {
+  margin: 0;
+  font-size: 2.5em;
+  padding: 25px;
+}
