@@ -308,6 +308,7 @@ body {
       display: block;
       width: 100%;
       border: 2px solid #937966;
+      transition: border 5s ease-out;
       padding: 5px; }
     .barbers .barbers-container p {
       margin: 0;
@@ -319,16 +320,26 @@ body {
     .barbers .barbers-container .buttons {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       margin: auto;
       padding-bottom: 20px; }
       .barbers .barbers-container .buttons img {
-        width: 49%;
-        border-radius: 50%; }
+        width: 120px;
+        border-radius: 50%;
+        height: 120px;
+        padding: 0; }
       .barbers .barbers-container .buttons .select-btn {
         background: transparent;
-        border: none;
         cursor: pointer;
-        border-radius: 50%; }
+        border-radius: 50%;
+        border: none;
+        height: 140px;
+        width: 140px; }
+        .barbers .barbers-container .buttons .select-btn:focus {
+          outline: none; }
+    .barbers .barbers-container .selected {
+      border: 2px solid #937966;
+      transition: border 0.2s ease-out; }
     .barbers .barbers-container .description {
       text-align: left; }
       .barbers .barbers-container .description .subscribe-btn {
@@ -343,8 +354,6 @@ body {
           text-decoration: underline; }
         .barbers .barbers-container .description .subscribe-btn:focus {
           outline: none; }
-    .barbers .barbers-container .selected {
-      border: 2px solid #937966; }
 
 @media (min-width: 900px) {
   .barbers .moustaches::after,
@@ -365,9 +374,18 @@ body {
       margin-left: 25px; }
     .barbers .barbers-container .buttons {
       flex-direction: column;
-      align-content: center; }
+      align-content: center;
+      margin: 25px auto;
+      height: 50%; }
       .barbers .barbers-container .buttons img {
-        width: 150px;
-        margin-bottom: 10px; }
+        width: 100px;
+        height: 100px; }
+      .barbers .barbers-container .buttons .select-btn {
+        padding: 0;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 25px; }
+      .barbers .barbers-container .buttons .select-btn:focus {
+        outline: none; }
     .barbers .barbers-container .description {
       width: 400px; } }

@@ -6,7 +6,7 @@ import barber2 from "../images/barber2.jpg";
 const Barbers = (props) => {
   const data = [
     {
-      id: 1,
+      id: 0,
       name: "Артур",
       description:
         "Артур - видит что нужно делать, и делает что велит" +
@@ -15,7 +15,7 @@ const Barbers = (props) => {
       image: barber1,
     },
     {
-      id: 2,
+      id: 1,
       name: "Сергій",
       description:
         "Сергей,знает свое дело на отлично," +
@@ -27,6 +27,18 @@ const Barbers = (props) => {
   const [barbers, setBarbers] = useState(data);
   const [activeBarber, setActiveBarber] = useState(barbers[0]);
 
+  const onClick = (e) => {
+    setActiveBarber(barbers[e.target.id]);
+  };
+
+  const isSelected = (id) => {
+    if (id === activeBarber.id) {
+      return "selected";
+    } else {
+      return "";
+    }
+  };
+
   return (
     <div className="barbers" id="barbers">
       <h3>ПЕРУКАРІ</h3>
@@ -36,8 +48,18 @@ const Barbers = (props) => {
       <div className="barbers-container">
         <div className="buttons">
           {barbers.map((barber) => (
-            <button key={barber.id} id={barber.id} className="select-btn">
-              <img src={barber.image} alt={barber.name} />
+            <button
+              key={barber.id}
+              id={barber.id}
+              onClick={onClick}
+              className="select-btn"
+            >
+              <img
+                src={barber.image}
+                id={barber.id}
+                className={isSelected(barber.id)}
+                alt={barber.name}
+              />
             </button>
           ))}
         </div>

@@ -36,6 +36,7 @@
       display: block;
       width: 100%;
       border: 2px solid $border-color;
+      transition: border 5s ease-out;
       padding: 5px;
     }
 
@@ -53,20 +54,34 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       margin: auto;
       padding-bottom: 20px;
 
       img {
-        width: 49%;
+        width: 120px;
         border-radius: 50%;
+        height: 120px;
+        padding: 0;
       }
 
       .select-btn {
         background: transparent;
-        border: none;
         cursor: pointer;
         border-radius: 50%;
+        border: none;
+        height: 140px;
+        width: 140px;
+
+        &:focus {
+          outline: none;
+        }
       }
+    }
+
+    .selected {
+      border: 2px solid $border-color;
+      transition: border 0.2s ease-out;
     }
 
     .description {
@@ -89,10 +104,6 @@
           outline: none;
         }
       }
-    }
-
-    .selected {
-      border: 2px solid $border-color;
     }
   }
 }
@@ -121,11 +132,24 @@
 
       .buttons {
         img {
-          width: 150px;
-          margin-bottom: 10px;
+          width: 100px;
+          height: 100px;
         }
         flex-direction: column;
         align-content: center;
+        margin: 25px auto;
+        height: 50%;
+
+        .select-btn {
+          padding: 0;
+          width: 120px;
+          height: 120px;
+          margin-bottom: 25px;
+        }
+
+        .select-btn:focus {
+          outline: none;
+        }
       }
 
       .description {
