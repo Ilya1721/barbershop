@@ -26,6 +26,15 @@
     height: 3px;
     background: $border-color;
   }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 
   .barbers-container {
     display: flex;
@@ -36,7 +45,6 @@
       display: block;
       width: 100%;
       border: 2px solid $border-color;
-      transition: border 5s ease-out;
       padding: 5px;
     }
 
@@ -72,6 +80,8 @@
         border: none;
         height: 140px;
         width: 140px;
+        opacity: 1;
+        transition: opacity 1s ease-out;
 
         &:focus {
           outline: none;
@@ -82,6 +92,10 @@
     .selected {
       border: 2px solid $border-color;
       transition: border 0.2s ease-out;
+    }
+
+    .fade-in {
+      animation: fadein 1s;
     }
 
     .description {
