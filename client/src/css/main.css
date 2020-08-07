@@ -398,3 +398,57 @@ body {
         outline: none; }
     .barbers .barbers-container .description {
       width: 400px; } }
+
+.contacts-footer {
+  background: #10100e;
+  color: #fff;
+  padding-top: 50px; }
+  .contacts-footer h3 {
+    margin: 0;
+    font-size: 2.5em;
+    padding: 25px;
+    display: block;
+    border-top: 2px solid #937966;
+    border-bottom: 2px solid #937966;
+    width: 60%;
+    text-align: center;
+    margin: auto; }
+  .contacts-footer .contacts-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-bottom: 50px; }
+    .contacts-footer .contacts-container .schedule {
+      display: flex;
+      margin: auto;
+      flex-direction: column;
+      border: 2px solid #937966;
+      height: 225px;
+      width: 280px; }
+      .contacts-footer .contacts-container .schedule .line {
+        display: flex;
+        margin-bottom: 25px;
+        width: 80%;
+        margin: auto; }
+        .contacts-footer .contacts-container .schedule .line img {
+          width: 25px;
+          align-self: baseline;
+          margin-right: 20px; }
+    .contacts-footer .contacts-container .map {
+      height: 225px;
+      width: 280px;
+      border: 2px solid #937966;
+      margin: 20px auto; }
+
+@media (min-width: 900px) {
+  .contacts-footer h3 {
+    width: 40%; }
+  .contacts-footer .contacts-container {
+    flex-direction: row;
+    width: 70%;
+    margin: 50px auto auto; }
+    .contacts-footer .contacts-container .map {
+      width: 70%;
+      height: 250px; }
+    .contacts-footer .contacts-container .schedule {
+      height: 250px; } }

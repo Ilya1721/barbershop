@@ -4,6 +4,7 @@ import Image from "./components/Image";
 import Services from "./components/Services";
 import Works from "./components/Works";
 import Barbers from "./components/Barbers";
+import Contacts from "./components/Contacts";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Services />
       <Works />
       <Barbers />
+      <Contacts />
     </React.Fragment>
   );
 }
