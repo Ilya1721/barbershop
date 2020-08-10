@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import Works from "./components/Works";
 import Barbers from "./components/Barbers";
 import Contacts from "./components/Contacts";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Works />
       <Barbers />
       <Contacts />
+      <Register />
     </React.Fragment>
   );
 }
