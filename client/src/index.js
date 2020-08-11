@@ -1,8 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './css/main.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./css/main.css";
+import App from "./App";
 
-ReactDOM.render(<React.StrictMode>
-  <App/>
-</React.StrictMode>, document.getElementById('root'));
+ReactDOM.render(
+  <React.Fragment>
+    <App />
+  </React.Fragment>,
+  document.getElementById("root")
+);
