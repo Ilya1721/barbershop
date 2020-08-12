@@ -154,7 +154,7 @@ const Register = (props) => {
   };
 
   return (
-    <div className="register">
+    <div className="register" id="register">
       <h3>ЗАПИСАТИСЯ</h3>
       <div className="form">
         <div className="barbers">
@@ -209,6 +209,17 @@ const Register = (props) => {
                 {visit.time}
               </button>
             ))}
+        </div>
+        <div className="contact-data">
+          <label htmlFor="lastName">Прізвище</label>
+          <input type="text" name="lastName" id="lastName" />
+          <label htmlFor="firstName">Ім`я</label>
+          <input type="text" name="firstName" id="firstName" />
+          <label htmlFor="phoneNumber">Номер телефону</label>
+          <input type="text" name="phoneNumber" id="phoneNumber" />
+        </div>
+        <div className="submit">
+          <button className="submit-btn">Записатись</button>
         </div>
       </div>
     </div>

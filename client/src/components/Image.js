@@ -6,44 +6,45 @@ import instagram from "../images/instagram.png";
 import phone from "../images/phone.png";
 import telegram_icon from "../images/telegram_icon.png";
 import viber_icon from "../images/viber_icon.png";
+import Api from "../api/api";
 
 const Image = (props) => {
   return (
     <div className="image">
       <div className="overlay">
         <div className="opening">
-          МИ ВІДКРИЛИСЬ. ВУЛ.РАСКОВА 13/2. ТУТ ВИ ОТРИМАЄТЕ ЯКІСНІ ПОСЛУГИ ЗА
-          ДОСТУПНИМИ ЦІНАМИ.
+          МИ ВІДКРИЛИСЬ. {Api.contacts.address}. ТУТ ВИ ОТРИМАЄТЕ ЯКІСНІ ПОСЛУГИ
+          ЗА ДОСТУПНИМИ ЦІНАМИ.
         </div>
         <div className="subscribe">
-          <a href="#" className="subscribe-btn">
+          <a href="#register" className="subscribe-btn">
             Записатися
           </a>
         </div>
         <div className="contacts" id="contacts">
           <div className="phone">
             <img src={phone} alt="phone" />
-            +38 097 099 09 90
+            {Api.contacts.phoneNumber}
           </div>
           <div className="adress">
             <img src={address} alt="address" />
-            ул. Свободи, 75
+            {Api.contacts.address.toLowerCase()}
           </div>
           <div className="schedule">
             <img src={clock} alt="clock" />
-            Пн – Нд: 10:00 – 20:00
+            {Api.contacts.schedule}
           </div>
           <div className="social">
-            <a href="#">
+            <a href={Api.contacts.social.telegram}>
               <img src={telegram_icon} alt="telegram" />
             </a>
-            <a href="#">
+            <a href={Api.contacts.social.instagram}>
               <img src={instagram} alt="instagram" />
             </a>
-            <a href="#">
+            <a href={Api.contacts.social.facebook}>
               <img src={facebook} alt="facebook" />
             </a>
-            <a href="#">
+            <a href={Api.contacts.social.viber}>
               <img src={viber_icon} alt="viber" />
             </a>
           </div>

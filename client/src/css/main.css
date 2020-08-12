@@ -520,6 +520,30 @@ body {
           outline: none; }
         .register .form .time button:hover {
           text-decoration: underline; }
+    .register .form .contact-data {
+      padding-bottom: 25px; }
+      .register .form .contact-data label {
+        display: block;
+        font-size: 1.4em;
+        padding: 10px 0; }
+      .register .form .contact-data input[type="text"] {
+        min-height: 20px;
+        font-size: 1.4em;
+        width: 100%; }
+        .register .form .contact-data input[type="text"]:focus {
+          outline: none; }
+  .register .submit {
+    padding-bottom: 20px; }
+    .register .submit .submit-btn {
+      background: #ffbd00;
+      border: none;
+      padding: 15px;
+      font-size: 1.4em;
+      cursor: pointer; }
+      .register .submit .submit-btn:focus {
+        outline: none; }
+      .register .submit .submit-btn:hover {
+        text-decoration: underline; }
   .register .selected {
     border: 2px solid #937966 !important;
     transition: border 0.2s ease-out; }
@@ -537,4 +561,13 @@ body {
         margin-right: 100px; }
         .register .form .barbers .barber-info img {
           width: 250px;
-          height: 250px; } }
+          height: 250px; }
+    .register .form .contact-data {
+      text-align: center; }
+      .register .form .contact-data input[type="text"] {
+        width: 50%; }
+    .register .form .submit {
+      text-align: center; }
+      .register .form .submit .submit-btn {
+        width: 300px;
+        margin: 5px 0; } }

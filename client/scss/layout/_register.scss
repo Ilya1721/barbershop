@@ -96,6 +96,46 @@
         }
       }
     }
+
+    .contact-data {
+      padding-bottom: 25px;
+
+      label {
+        display: block;
+        font-size: 1.4em;
+        padding: 10px 0;
+      }
+
+      input[type="text"] {
+        min-height: 20px;
+        font-size: 1.4em;
+        width: 100%;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .submit {
+    padding-bottom: 20px;
+
+    .submit-btn {
+      background: $primary-color;
+      border: none;
+      padding: 15px;
+      font-size: 1.4em;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .selected {
@@ -125,6 +165,23 @@
             height: 250px;
           }
           margin-right: 100px;
+        }
+      }
+
+      .contact-data {
+        text-align: center;
+
+        input[type="text"] {
+          width: 50%;
+        }
+      }
+
+      .submit {
+        text-align: center;
+
+        .submit-btn {
+          width: 300px;
+          margin: 5px 0;
         }
       }
     }
