@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import moustaches from "../images/moustaches.png";
-import Api from "../api/api";
+import { services_get } from "../api/services";
 
 const Services = (props) => {
-  console.log(Api.services);
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    console.log("use effect");
+    services_get()
+      .then((res) => {
+        setServices(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="services" id="services">
@@ -13,7 +23,7 @@ const Services = (props) => {
       </div>
       <div className="services-container">
         <div className="left-list">
-          {Api.services
+          {services
             .filter((service) => service.id < 3)
             .map((service) => (
               <div key={service.id} className="list-item">
@@ -23,8 +33,8 @@ const Services = (props) => {
             ))}
         </div>
         <div className="right-list">
-          {Api.services
-            .filter((service) => service.id < 3)
+          {services
+            .filter((service) => service.id > 3)
             .map((service) => (
               <div key={service.id} className="list-item">
                 <div className="name">{service.name}</div>

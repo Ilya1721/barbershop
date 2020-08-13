@@ -6,14 +6,14 @@ import instagram from "../images/instagram.png";
 import phone from "../images/phone.png";
 import telegram_icon from "../images/telegram_icon.png";
 import viber_icon from "../images/viber_icon.png";
-import Api from "../api/api";
+import { all } from "../api/api";
 
 const Image = (props) => {
   return (
     <div className="image">
       <div className="overlay">
         <div className="opening">
-          МИ ВІДКРИЛИСЬ. {Api.contacts.address}. ТУТ ВИ ОТРИМАЄТЕ ЯКІСНІ ПОСЛУГИ
+          МИ ВІДКРИЛИСЬ. {all.contacts.address}. ТУТ ВИ ОТРИМАЄТЕ ЯКІСНІ ПОСЛУГИ
           ЗА ДОСТУПНИМИ ЦІНАМИ.
         </div>
         <div className="subscribe">
@@ -24,27 +24,27 @@ const Image = (props) => {
         <div className="contacts" id="contacts">
           <div className="phone">
             <img src={phone} alt="phone" />
-            {Api.contacts.phoneNumber}
+            {all.contacts.phoneNumber}
           </div>
           <div className="adress">
             <img src={address} alt="address" />
-            {Api.contacts.address.toLowerCase()}
+            {all.contacts.address.toLowerCase()}
           </div>
           <div className="schedule">
             <img src={clock} alt="clock" />
-            {Api.contacts.schedule}
+            {all.contacts.schedule}
           </div>
           <div className="social">
-            <a href={Api.contacts.social.telegram}>
+            <a href={all.contacts.social.telegram}>
               <img src={telegram_icon} alt="telegram" />
             </a>
-            <a href={Api.contacts.social.instagram}>
+            <a href={all.contacts.social.instagram}>
               <img src={instagram} alt="instagram" />
             </a>
-            <a href={Api.contacts.social.facebook}>
+            <a href={all.contacts.social.facebook}>
               <img src={facebook} alt="facebook" />
             </a>
-            <a href={Api.contacts.social.viber}>
+            <a href={all.contacts.social.viber}>
               <img src={viber_icon} alt="viber" />
             </a>
           </div>

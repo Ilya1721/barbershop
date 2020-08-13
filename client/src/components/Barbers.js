@@ -2,29 +2,10 @@ import React, { useState } from "react";
 import moustaches from "../images/moustaches.png";
 import barber1 from "../images/barber1.jpg";
 import barber2 from "../images/barber2.jpg";
+import { all } from "../api/api";
 
 const Barbers = (props) => {
-  const data = [
-    {
-      id: 0,
-      name: "Артур",
-      description:
-        "Артур - видит что нужно делать, и делает что велит " +
-        "собственное чувство стиля. " +
-        "Гармония стрижки и стиля - не заменимая часть имиджа...",
-      image: barber1,
-    },
-    {
-      id: 1,
-      name: "Сергій",
-      description:
-        "Сергей,знает свое дело на отлично, " +
-        "стрижка и борода - это его стихия.",
-      image: barber2,
-    },
-  ];
-
-  const [barbers, setBarbers] = useState(data);
+  const [barbers, setBarbers] = useState(all.barbers);
   const [activeBarber, setActiveBarber] = useState(barbers[0]);
   const [fade, setFade] = useState(true);
 

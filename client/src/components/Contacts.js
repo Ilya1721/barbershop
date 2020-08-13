@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import address from "../images/address.png";
 import clock from "../images/clock.png";
 import phone from "../images/phone.png";
 import GoogleMapReact from "google-map-react";
+import { all } from "../api/api";
 
 const Contacts = (props) => {
   const coords = { lat: 49.4199127, lng: 26.9868166 };
@@ -20,7 +21,7 @@ const Contacts = (props) => {
               <br />
               кожний день
               <br />
-              Пн – Нд: 10:00 – 20:00
+              {all.contacts.schedule}
             </div>
           </div>
           <div className="line">
@@ -28,12 +29,12 @@ const Contacts = (props) => {
             <div className="text">
               г.Хмельницкий
               <br />
-              ул. Свободи, 75
+              {all.contacts.address.toLowerCase()}
             </div>
           </div>
           <div className="line">
             <img src={phone} alt="phone" />
-            <div className="text">+38 097 099 09 90</div>
+            <div className="text">{all.contacts.phoneNumber}</div>
           </div>
         </div>
         <div className="map">
