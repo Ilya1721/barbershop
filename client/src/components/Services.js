@@ -6,11 +6,9 @@ const Services = (props) => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    console.log("use effect");
     services_get()
       .then((res) => {
-        setServices(res.data);
-        console.log(res.data);
+        setServices(res);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -23,24 +21,24 @@ const Services = (props) => {
       </div>
       <div className="services-container">
         <div className="left-list">
-          {services
-            .filter((service) => service.id < 3)
-            .map((service) => (
-              <div key={service.id} className="list-item">
+          {services !== undefined &&
+            services.slice(0, services.length / 2).map((service) => (
+              <div key={service._id} className="list-item">
                 <div className="name">{service.name}</div>
                 <div className="price">{service.price}грн.</div>
               </div>
             ))}
         </div>
         <div className="right-list">
-          {services
-            .filter((service) => service.id > 3)
-            .map((service) => (
-              <div key={service.id} className="list-item">
-                <div className="name">{service.name}</div>
-                <div className="price">{service.price}грн.</div>
-              </div>
-            ))}
+          {services !== undefined &&
+            services
+              .slice(services.length / 2, services.length)
+              .map((service) => (
+                <div key={service._id} className="list-item">
+                  <div className="name">{service.name}</div>
+                  <div className="price">{service.price}грн.</div>
+                </div>
+              ))}
         </div>
       </div>
     </div>

@@ -12,34 +12,6 @@ import barber1 from "../images/barber1.jpg";
 import barber2 from "../images/barber2.jpg";
 
 export const all = {
-  services: [
-    {
-      id: 0,
-      name: "Чоловіча зачіска",
-      price: "60",
-    },
-    {
-      id: 1,
-      name: "Жіноча зачіска",
-      price: "100",
-    },
-    {
-      id: 2,
-      name: "Дитяча зачіска",
-      price: "30",
-    },
-    {
-      id: 3,
-      name: "Стильна зачіска",
-      price: "150",
-    },
-    {
-      id: 4,
-      name: "Бриття",
-      price: "20",
-    },
-  ],
-
   contacts: {
     address: "ВУЛ.РАСКОВА 13/2",
     phoneNumber: "+38 097 099 09 90",

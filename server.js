@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-const services = require("./api/services");
+const services = require("./routes/api/services");
 
 const app = express();
 
