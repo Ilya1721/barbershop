@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import address from "../images/address.png";
-import clock from "../images/clock.png";
-import phone from "../images/phone.png";
 import GoogleMapReact from "google-map-react";
-import { all } from "../api/api";
+import { contacts_get } from "../api/contacts";
 
 const Contacts = (props) => {
   const coords = { lat: 49.4199127, lng: 26.9868166 };
   const zoom = 18;
+  const [contacts, setContacts] = useState(undefined);
+
+  useEffect(() => {
+    contacts_get()
+      .then((res) => {
+        setContacts(res[0]);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="contacts-footer">
@@ -15,26 +21,35 @@ const Contacts = (props) => {
       <div className="contacts-container">
         <div className="schedule">
           <div className="line">
-            <img src={clock} alt="clock" />
+            <img
+              src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/clock.png"
+              alt="clock"
+            />
             <div className="text">
               ЧАС РОБОТИ:
               <br />
               кожний день
               <br />
-              {all.contacts.schedule}
+              {contacts && contacts.schedule}
             </div>
           </div>
           <div className="line">
-            <img src={address} alt="address" />
+            <img
+              src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/address.png"
+              alt="address"
+            />
             <div className="text">
               г.Хмельницкий
               <br />
-              {all.contacts.address.toLowerCase()}
+              {contacts && contacts.address.toLowerCase()}
             </div>
           </div>
           <div className="line">
-            <img src={phone} alt="phone" />
-            <div className="text">{all.contacts.phoneNumber}</div>
+            <img
+              src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/phone.png"
+              alt="phone"
+            />
+            <div className="text">{contacts && contacts.phoneNumber}</div>
           </div>
         </div>
         <div className="map">

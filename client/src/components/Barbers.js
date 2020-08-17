@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import moustaches from "../images/moustaches.png";
-import barber1 from "../images/barber1.jpg";
-import barber2 from "../images/barber2.jpg";
-import { all } from "../api/api";
+import React, { useState, useEffect } from "react";
+import { barbers_get } from "../api/barbers";
 
 const Barbers = (props) => {
-  const [barbers, setBarbers] = useState(all.barbers);
-  const [activeBarber, setActiveBarber] = useState(barbers[0]);
+  const [barbers, setBarbers] = useState([]);
+  const [activeBarber, setActiveBarber] = useState(undefined);
   const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    barbers_get().then((res) => {
+      setBarbers(res);
+      setActiveBarber(res[0]);
+    });
+  }, []);
 
   const onClick = (e) => {
     setActiveBarber(barbers[e.target.id]);
@@ -15,7 +19,7 @@ const Barbers = (props) => {
   };
 
   const isSelected = (id) => {
-    if (id === activeBarber.id) {
+    if (activeBarber && id === activeBarber._id) {
       return "selected";
     } else {
       return "";
@@ -30,40 +34,44 @@ const Barbers = (props) => {
     <div className="barbers" id="barbers">
       <h3>ПЕРУКАРІ</h3>
       <div className="moustaches">
-        <img src={moustaches} alt="moustaches" />
+        <img
+          src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/moustaches.png"
+          alt="moustaches"
+        />
       </div>
       <div className="barbers-container">
         <div className="buttons">
-          {barbers.map((barber) => (
-            <button
-              key={barber.id}
-              id={barber.id}
-              onClick={onClick}
-              className="select-btn"
-            >
-              <img
-                src={barber.image}
-                id={barber.id}
-                className={isSelected(barber.id)}
-                alt={barber.name}
-              />
-            </button>
-          ))}
+          {barbers.length > 0 &&
+            barbers.map((barber) => (
+              <button
+                key={barber._id}
+                id={barbers.indexOf(barber)}
+                onClick={onClick}
+                className="select-btn"
+              >
+                <img
+                  src={barber.image}
+                  id={barbers.indexOf(barber)}
+                  className={isSelected(barber._id)}
+                  alt={barber.name}
+                />
+              </button>
+            ))}
         </div>
         <img
           className={`main-img ${fade ? "fade-in" : ""}`}
           onAnimationEnd={onAnimationEnd}
-          src={activeBarber.image}
+          src={activeBarber && activeBarber.image}
           alt="barber"
         />
         <div
           className={`description ${fade ? "fade-in" : ""}`}
           onAnimationEnd={onAnimationEnd}
         >
-          <h5>{activeBarber.name}</h5>
-          <p>{activeBarber.description}</p>
+          <h5>{activeBarber && activeBarber.name}</h5>
+          <p>{activeBarber && activeBarber.description}</p>
           <a href="#subscribe" className="subscribe-btn">
-            ЗАПИСАТИСЯ ДО {activeBarber.name}
+            ЗАПИСАТИСЯ ДО {activeBarber && activeBarber.name.toUpperCase()}
           </a>
         </div>
       </div>

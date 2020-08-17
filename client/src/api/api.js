@@ -12,51 +12,6 @@ import barber1 from "../images/barber1.jpg";
 import barber2 from "../images/barber2.jpg";
 
 export const all = {
-  contacts: {
-    address: "ВУЛ.РАСКОВА 13/2",
-    phoneNumber: "+38 097 099 09 90",
-    schedule: "Пн – Нд: 10:00 – 20:00",
-    social: {
-      telegram: "#",
-      instagram: "#",
-      facebook: "#",
-      viber: "#",
-    },
-  },
-
-  works: [
-    {
-      photo: work1,
-    },
-    {
-      photo: work2,
-    },
-    {
-      photo: work3,
-    },
-    {
-      photo: work4,
-    },
-    {
-      photo: work5,
-    },
-    {
-      photo: work6,
-    },
-    {
-      photo: work7,
-    },
-    {
-      photo: work8,
-    },
-    {
-      photo: work9,
-    },
-    {
-      photo: work10,
-    },
-  ],
-
   barbers: [
     {
       id: 0,

@@ -1,20 +1,21 @@
-import React from "react";
-import address from "../images/address.png";
-import clock from "../images/clock.png";
-import facebook from "../images/facebook.png";
-import instagram from "../images/instagram.png";
-import phone from "../images/phone.png";
-import telegram_icon from "../images/telegram_icon.png";
-import viber_icon from "../images/viber_icon.png";
-import { all } from "../api/api";
+import React, { useState, useEffect } from "react";
+import { contacts_get } from "../api/contacts";
 
 const Image = (props) => {
+  const [contacts, setContacts] = useState(undefined);
+
+  useEffect(() => {
+    contacts_get().then((res) => {
+      setContacts(res[0]);
+    });
+  }, []);
+
   return (
     <div className="image">
       <div className="overlay">
         <div className="opening">
-          МИ ВІДКРИЛИСЬ. {all.contacts.address}. ТУТ ВИ ОТРИМАЄТЕ ЯКІСНІ ПОСЛУГИ
-          ЗА ДОСТУПНИМИ ЦІНАМИ.
+          МИ ВІДКРИЛИСЬ. {contacts && contacts.address}. ТУТ ВИ ОТРИМАЄТЕ ЯКІСНІ
+          ПОСЛУГИ ЗА ДОСТУПНИМИ ЦІНАМИ.
         </div>
         <div className="subscribe">
           <a href="#register" className="subscribe-btn">
@@ -23,29 +24,50 @@ const Image = (props) => {
         </div>
         <div className="contacts" id="contacts">
           <div className="phone">
-            <img src={phone} alt="phone" />
-            {all.contacts.phoneNumber}
+            <img
+              src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/phone.png"
+              alt="phone"
+            />
+            {contacts && contacts.phoneNumber}
           </div>
           <div className="adress">
-            <img src={address} alt="address" />
-            {all.contacts.address.toLowerCase()}
+            <img
+              src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/address.png"
+              alt="address"
+            />
+            {contacts && contacts.address.toLowerCase()}
           </div>
           <div className="schedule">
-            <img src={clock} alt="clock" />
-            {all.contacts.schedule}
+            <img
+              src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/clock.png"
+              alt="clock"
+            />
+            {contacts && contacts.schedule}
           </div>
           <div className="social">
-            <a href={all.contacts.social.telegram}>
-              <img src={telegram_icon} alt="telegram" />
+            <a href={contacts && contacts.social.telegram}>
+              <img
+                src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/telegram_icon.png"
+                alt="telegram"
+              />
             </a>
-            <a href={all.contacts.social.instagram}>
-              <img src={instagram} alt="instagram" />
+            <a href={contacts && contacts.social.instagram}>
+              <img
+                src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/instagram.png"
+                alt="instagram"
+              />
             </a>
-            <a href={all.contacts.social.facebook}>
-              <img src={facebook} alt="facebook" />
+            <a href={contacts && contacts.social.facebook}>
+              <img
+                src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/facebook.png"
+                alt="facebook"
+              />
             </a>
-            <a href={all.contacts.social.viber}>
-              <img src={viber_icon} alt="viber" />
+            <a href={contacts && contacts.social.viber}>
+              <img
+                src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/viber_icon.png"
+                alt="viber"
+              />
             </a>
           </div>
         </div>

@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const Service = require("../../models/Service");
+const Barber = require("../../models/Barber");
 
-//@route GET /api/services
+//@route GET /api/barbers
 router.get("/", (req, res) => {
-  Service.find()
-    .then((services) => res.json(services))
+  Barber.find()
+    .then((barbers) => res.json(barbers))
     .catch((err) => console.log(err));
 });
 

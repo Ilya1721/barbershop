@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const Service = require("../../models/Service");
+const Contacts = require("../../models/Contacts");
 
-//@route GET /api/services
+//@route GET /api/contacts
 router.get("/", (req, res) => {
-  Service.find()
+  Contacts.find()
     .then((services) => res.json(services))
     .catch((err) => console.log(err));
 });

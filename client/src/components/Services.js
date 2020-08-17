@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import moustaches from "../images/moustaches.png";
 import { services_get } from "../api/services";
 
 const Services = (props) => {
@@ -17,7 +16,10 @@ const Services = (props) => {
     <div className="services" id="services">
       <h3>ПОСЛУГИ</h3>
       <div className="moustaches">
-        <img src={moustaches} alt="moustaches" />
+        <img
+          src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/moustaches.png"
+          alt="moustaches"
+        />
       </div>
       <div className="services-container">
         <div className="left-list">

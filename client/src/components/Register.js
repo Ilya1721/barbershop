@@ -1,13 +1,18 @@
-import React, { useState } from "react";
-import barber1 from "../images/barber1.jpg";
-import barber2 from "../images/barber2.jpg";
-import { all } from "../api/api";
+import React, { useState, useEffect } from "react";
+import { barbers_get } from "../api/barbers";
 
 const Register = (props) => {
-  const [barbers, setBarbers] = useState(all.barbers);
-  const [activeBarber, setActiveBarber] = useState(barbers[0]);
+  const [barbers, setBarbers] = useState([]);
+  const [activeBarber, setActiveBarber] = useState({});
   const [fade, setFade] = useState(true);
   const [activeTime, setActiveTime] = useState({});
+
+  useEffect(() => {
+    barbers_get().then((res) => {
+      setBarbers(res);
+      setActiveBarber(res[0]);
+    });
+  }, []);
 
   const chooseBarber = (e) => {
     setActiveBarber(barbers[e.target.id]);
@@ -15,12 +20,12 @@ const Register = (props) => {
   };
 
   const onChooseTime = (e) => {
-    setActiveTime(activeBarber.visits[e.target.id]);
+    //setActiveTime(activeBarber.visits[e.target.id]);
   };
 
   const isTimeSelected = (id) => {
-    if (id === activeTime.id) return "selected-time";
-    else return "";
+    //if (id === activeTime.id) return "selected-time";
+    //else return "";
   };
 
   const onAnimationEnd = () => {
@@ -42,50 +47,36 @@ const Register = (props) => {
               <div className="name">{activeBarber.name}</div>
               <button
                 onClick={chooseBarber}
-                id={activeBarber.id}
+                id={barbers.indexOf(activeBarber)}
                 className="register-btn"
               >
                 Обрати {activeBarber.name}
               </button>
             </div>
           </div>
-          {barbers
-            .filter((barber) => barber.id !== activeBarber.id)
-            .map((barber) => (
-              <div
-                key={barber.id}
-                className={`barber-info ${fade ? "fade-in" : ""}`}
-              >
-                <img src={barber.image} alt={barber.name} />
-                <div className="right">
-                  <div className="name">{barber.name}</div>
-                  <button
-                    onClick={chooseBarber}
-                    id={barber.id}
-                    className="register-btn"
-                  >
-                    Обрати {barber.name}
-                  </button>
+          {barbers.length > 0 &&
+            barbers
+              .filter((barber) => barber._id !== activeBarber._id)
+              .map((barber) => (
+                <div
+                  key={barber._id}
+                  className={`barber-info ${fade ? "fade-in" : ""}`}
+                >
+                  <img src={barber.image} alt={barber.name} />
+                  <div className="right">
+                    <div className="name">{barber.name}</div>
+                    <button
+                      onClick={chooseBarber}
+                      id={barbers.indexOf(barber)}
+                      className="register-btn"
+                    >
+                      Обрати {barber.name}
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
         </div>
         <div className="day"></div>
-        <div className="time">
-          {activeBarber.schedule.days
-            .filter((day) => day.id === 0)[0]
-            .visits.filter((visit) => visit.isFree !== false)
-            .map((visit) => (
-              <button
-                onClick={onChooseTime}
-                className={isTimeSelected(visit.id)}
-                id={visit.id}
-                key={visit.id}
-              >
-                {visit.time}
-              </button>
-            ))}
-        </div>
         <div className="contact-data">
           <label htmlFor="lastName">Прізвище</label>
           <input type="text" name="lastName" id="lastName" />

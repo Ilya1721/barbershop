@@ -1,12 +1,14 @@
 import React from "react";
-import logo from "../images/barbershopLogo.png";
 
 const Navbar = (props) => {
   return (
     <div className="navbar">
       <div className="logo">
         <a href="/">
-          <img src={logo} alt="logo" />
+          <img
+            src="https://barbershop-images.s3.eu-central-1.amazonaws.com/icons/barbershopLogo.png"
+            alt="logo"
+          />
         </a>
         <a href="/">Khmelnitskiy Barbershop</a>
       </div>
