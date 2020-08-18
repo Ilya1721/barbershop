@@ -8,6 +8,7 @@ const services = require("./routes/api/services");
 const contacts = require("./routes/api/contacts");
 const works = require("./routes/api/works");
 const barbers = require("./routes/api/barbers");
+const visits = require("./routes/api/visits");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/api/services", services);
 app.use("/api/contacts", contacts);
 app.use("/api/works", works);
 app.use("/api/barbers", barbers);
+app.use("/api/visits", visits);
 
 const PORT = process.env.PORT || 5000;
 

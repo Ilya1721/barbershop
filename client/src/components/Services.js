@@ -7,7 +7,7 @@ const Services = (props) => {
   useEffect(() => {
     services_get()
       .then((res) => {
-        setServices(res);
+        setServices(res.data);
       })
       .catch((err) => console.log(err));
   }, []);

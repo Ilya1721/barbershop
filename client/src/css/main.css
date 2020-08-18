@@ -504,22 +504,6 @@ body {
               outline: none; }
             .register .form .barbers .barber-info .right .register-btn:hover {
               text-decoration: underline; }
-    .register .form .time {
-      display: flex;
-      flex-wrap: wrap;
-      padding-bottom: 25px;
-      justify-content: center; }
-      .register .form .time button {
-        background: #ffbd00;
-        color: #000;
-        padding: 8px;
-        font-size: 1.1em;
-        border: 1px solid #fff;
-        cursor: pointer; }
-        .register .form .time button:focus {
-          outline: none; }
-        .register .form .time button:hover {
-          text-decoration: underline; }
     .register .form .contact-data {
       padding-bottom: 25px; }
       .register .form .contact-data label {
@@ -532,6 +516,19 @@ body {
         width: 100%; }
         .register .form .contact-data input[type="text"]:focus {
           outline: none; }
+      .register .form .contact-data .date {
+        display: flex; }
+        .register .form .contact-data .date input[type="date"] {
+          min-height: 25px;
+          font-size: 1.2em; }
+          .register .form .contact-data .date input[type="date"]:focus {
+            outline: none; }
+        .register .form .contact-data .date select {
+          min-height: 30px;
+          font-size: 1.2em;
+          flex-grow: 1; }
+          .register .form .contact-data .date select:focus {
+            outline: none; }
   .register .submit {
     padding-bottom: 20px; }
     .register .submit .submit-btn {
@@ -566,6 +563,9 @@ body {
       text-align: center; }
       .register .form .contact-data input[type="text"] {
         width: 50%; }
+      .register .form .contact-data .date {
+        width: 50%;
+        margin: auto; }
     .register .form .submit {
       text-align: center; }
       .register .form .submit .submit-btn {

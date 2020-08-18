@@ -73,30 +73,6 @@
       }
     }
 
-    .time {
-      display: flex;
-      flex-wrap: wrap;
-      padding-bottom: 25px;
-      justify-content: center;
-
-      button {
-        background: $primary-color;
-        color: #000;
-        padding: 8px;
-        font-size: 1.1em;
-        border: 1px solid #fff;
-        cursor: pointer;
-
-        &:focus {
-          outline: none;
-        }
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-
     .contact-data {
       padding-bottom: 25px;
 
@@ -113,6 +89,29 @@
 
         &:focus {
           outline: none;
+        }
+      }
+
+      .date {
+        display: flex;
+
+        input[type="date"] {
+          min-height: 25px;
+          font-size: 1.2em;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        select {
+          min-height: 30px;
+          font-size: 1.2em;
+          flex-grow: 1;
+
+          &:focus {
+            outline: none;
+          }
         }
       }
     }
@@ -173,6 +172,11 @@
 
         input[type="text"] {
           width: 50%;
+        }
+
+        .date {
+          width: 50%;
+          margin: auto;
         }
       }
 

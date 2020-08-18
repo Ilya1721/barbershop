@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { barbers_get } from "../api/barbers";
+import { visits_get } from "../api/visits";
+import DateTimePicker from "react-datetime-picker";
 
 const Register = (props) => {
   const [barbers, setBarbers] = useState([]);
   const [activeBarber, setActiveBarber] = useState({});
   const [fade, setFade] = useState(true);
-  const [activeTime, setActiveTime] = useState({});
+  const [visits, setVisits] = useState([]);
+  const [dateTime, setDateTime] = useState({});
+  const [hours, setHours] = useState([...Array(11)].map((x, i) => 9 + i));
+  const [minutes, setMinutes] = useState([0, 30]);
 
   useEffect(() => {
-    barbers_get().then((res) => {
-      setBarbers(res);
-      setActiveBarber(res[0]);
-    });
+    barbers_get()
+      .then((res) => {
+        setBarbers(res.data);
+        setActiveBarber(res.data[0]);
+      })
+      .catch((err) => console.log(err));
+
+    visits_get()
+      .then((res) => {
+        setVisits(res.data);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const chooseBarber = (e) => {
@@ -19,14 +32,7 @@ const Register = (props) => {
     setFade(true);
   };
 
-  const onChooseTime = (e) => {
-    //setActiveTime(activeBarber.visits[e.target.id]);
-  };
-
-  const isTimeSelected = (id) => {
-    //if (id === activeTime.id) return "selected-time";
-    //else return "";
-  };
+  const onChooseDate = (e) => {};
 
   const onAnimationEnd = () => {
     setFade(false);
@@ -76,8 +82,22 @@ const Register = (props) => {
                 </div>
               ))}
         </div>
-        <div className="day"></div>
         <div className="contact-data">
+          <label htmlFor="lastName">Дата і час</label>
+          <div className="date">
+            <input onChange={onChooseDate} type="date" />
+            <select name="hours" id="hours">
+              {hours.map((hour) => (
+                <option key={hour} value={hour}>
+                  {hour}
+                </option>
+              ))}
+            </select>
+            <select name="minutes" id="minutes">
+              <option value="0">00</option>
+              <option value="30">30</option>
+            </select>
+          </div>
           <label htmlFor="lastName">Прізвище</label>
           <input type="text" name="lastName" id="lastName" />
           <label htmlFor="firstName">Ім'я</label>

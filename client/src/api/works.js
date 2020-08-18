@@ -1,9 +1,7 @@
 import axios from "axios";
 
-export const works_get = async () => {
-  const res = await axios.get("/api/works");
-
-  return res.data;
+export const works_get = () => {
+  return axios.get("/api/works");
 };
 
 export default { works_get };

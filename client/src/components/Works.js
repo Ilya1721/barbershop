@@ -7,7 +7,7 @@ const Works = (props) => {
   useEffect(() => {
     works_get()
       .then((res) => {
-        setWorks(res);
+        setWorks(res.data);
       })
       .catch((err) => console.log(err));
   }, []);

@@ -10,7 +10,7 @@ const Contacts = (props) => {
   useEffect(() => {
     contacts_get()
       .then((res) => {
-        setContacts(res[0]);
+        setContacts(res.data[0]);
       })
       .catch((err) => console.log(err));
   }, []);

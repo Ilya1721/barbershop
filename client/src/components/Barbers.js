@@ -8,8 +8,8 @@ const Barbers = (props) => {
 
   useEffect(() => {
     barbers_get().then((res) => {
-      setBarbers(res);
-      setActiveBarber(res[0]);
+      setBarbers(res.data);
+      setActiveBarber(res.data[0]);
     });
   }, []);
 
