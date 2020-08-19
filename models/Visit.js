@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const VisitSchema = new Schema({
   barber: {
-    type: "ObjectId",
+    type: Schema.Types.ObjectId,
     required: true,
   },
   date: {
-    type: "Date",
+    type: Date,
     required: true,
   },
 });

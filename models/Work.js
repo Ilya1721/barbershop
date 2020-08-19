@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const WorkSchema = new Schema({
   img: {
-    type: "string",
+    type: String,
     required: true,
   },
 });

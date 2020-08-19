@@ -3,32 +3,32 @@ const Schema = mongoose.Schema;
 
 const ContactsSchema = new Schema({
   address: {
-    type: "string",
+    type: String,
     required: true,
   },
   phoneNumber: {
-    type: "string",
+    type: String,
     required: true,
   },
   schedule: {
-    type: "string",
+    type: String,
     required: true,
   },
   social: {
     telegram: {
-      type: "string",
+      type: String,
       required: true,
     },
     instagram: {
-      type: "string",
+      type: String,
       required: true,
     },
     facebook: {
-      type: "string",
+      type: String,
       required: true,
     },
     viber: {
-      type: "string",
+      type: String,
       required: true,
     },
   },

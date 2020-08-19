@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const ServiceSchema = new Schema({
   name: {
-    type: "string",
+    type: String,
     required: true,
   },
   price: {
-    type: "string",
+    type: String,
     required: true,
   },
 });

@@ -32,7 +32,33 @@ const Register = (props) => {
     setFade(true);
   };
 
-  const onChooseDate = (e) => {};
+  const onChooseDate = (e) => {
+    const chosenDate = new Date(e.target.value);
+
+    const filteredVisits = visits.filter((visit) => {
+      const visitDate = new Date(visit.date);
+
+      return (
+        visit.barber === activeBarber._id &&
+        chosenDate.getFullYear() === visitDate.getFullYear() &&
+        chosenDate.getMonth() === visitDate.getMonth() &&
+        chosenDate.getDate() === visitDate.getDate()
+      );
+    });
+
+    if (filteredVisits.length > 0) {
+      setHours(
+        hours.filter(
+          (hour) =>
+            !filteredVisits
+              .map((visit) => new Date(visit.date).getHours())
+              .includes(hour)
+        )
+      );
+    } else {
+      setHours([...Array(11)].map((x, i) => 9 + i));
+    }
+  };
 
   const onAnimationEnd = () => {
     setFade(false);
