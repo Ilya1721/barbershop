@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
@@ -20,7 +19,7 @@ dotenv.config({
 connectDB();
 
 //Body Parser Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 //Routes
 app.use("/api/services", services);
 app.use("/api/contacts", contacts);

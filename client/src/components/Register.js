@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { barbers_get } from "../api/barbers";
-import { visits_get } from "../api/visits";
-import DateTimePicker from "react-datetime-picker";
+import { visits_get, visits_post } from "../api/visits";
+import moment from "moment";
+import locale from "moment/locale/ru";
 
 const Register = (props) => {
   const [barbers, setBarbers] = useState([]);
   const [activeBarber, setActiveBarber] = useState({});
   const [fade, setFade] = useState(true);
   const [visits, setVisits] = useState([]);
-  const [dateTime, setDateTime] = useState({});
+  const [date, setDate] = useState({});
   const [hours, setHours] = useState([...Array(11)].map((x, i) => 9 + i));
   const [minutes, setMinutes] = useState([0, 30]);
+  const [chosenHour, setChosenHour] = useState(9);
+  const [chosenMinute, setChosenMinute] = useState(0);
+  const [firstName, setFirstName] = useState();
+  const [secondName, setSecondName] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
 
   useEffect(() => {
     barbers_get()
@@ -34,6 +40,7 @@ const Register = (props) => {
 
   const onChooseDate = (e) => {
     const chosenDate = new Date(e.target.value);
+    setDate(chosenDate);
 
     const filteredVisits = visits.filter((visit) => {
       const visitDate = new Date(visit.date);
@@ -64,10 +71,57 @@ const Register = (props) => {
     setFade(false);
   };
 
+  const onSelectHour = (e) => {
+    setChosenHour(e.target.value);
+  };
+
+  const onSelectMinute = (e) => {
+    setChosenMinute(e.target.value);
+  };
+
+  const onChangeSecondName = (e) => {
+    setSecondName(e.target.value);
+  };
+
+  const onChangeFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const onChangePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    let dateTime = date;
+    dateTime.setHours(chosenHour);
+    dateTime.setMinutes(chosenMinute);
+    moment.locale("ru");
+
+    visits_post({
+      barber: activeBarber._id,
+      date: dateTime,
+      client: {
+        firstName,
+        secondName,
+        phoneNumber,
+      },
+    })
+      .then((res) => {
+        res.status === 200 &&
+          alert(
+            `Ви успішно записалися на ${moment(res.data.date).format(
+              "DD.MM.YYYY, H:mm"
+            )}`
+          );
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="register" id="register">
       <h3>ЗАПИСАТИСЯ</h3>
-      <div className="form">
+      <form onSubmit={onSubmit} className="form">
         <div className="barbers">
           <div className={`barber-info ${fade ? "fade-in" : ""}`}>
             <img
@@ -112,29 +166,49 @@ const Register = (props) => {
           <label htmlFor="lastName">Дата і час</label>
           <div className="date">
             <input onChange={onChooseDate} type="date" />
-            <select name="hours" id="hours">
+            <select onChange={onSelectHour} name="hours" id="hours">
               {hours.map((hour) => (
                 <option key={hour} value={hour}>
                   {hour}
                 </option>
               ))}
             </select>
-            <select name="minutes" id="minutes">
+            <select onChange={onSelectMinute} name="minutes" id="minutes">
               <option value="0">00</option>
               <option value="30">30</option>
             </select>
           </div>
           <label htmlFor="lastName">Прізвище</label>
-          <input type="text" name="lastName" id="lastName" />
+          <input
+            onChange={onChangeSecondName}
+            value={secondName}
+            type="text"
+            name="lastName"
+            id="lastName"
+          />
           <label htmlFor="firstName">Ім'я</label>
-          <input type="text" name="firstName" id="firstName" />
+          <input
+            onChange={onChangeFirstName}
+            value={firstName}
+            type="text"
+            name="firstName"
+            id="firstName"
+          />
           <label htmlFor="phoneNumber">Номер телефону</label>
-          <input type="text" name="phoneNumber" id="phoneNumber" />
+          <input
+            onChange={onChangePhoneNumber}
+            value={phoneNumber}
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+          />
         </div>
         <div className="submit">
-          <button className="submit-btn">Записатись</button>
+          <button type="submit" className="submit-btn">
+            Записатись
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
