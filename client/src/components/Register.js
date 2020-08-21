@@ -94,28 +94,32 @@ const Register = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     let dateTime = date;
-    dateTime.setHours(chosenHour);
-    dateTime.setMinutes(chosenMinute);
-    moment.locale("ru");
+    if (chosenHour && chosenMinute && firstName && secondName && phoneNumber) {
+      dateTime.setHours(chosenHour);
+      dateTime.setMinutes(chosenMinute);
+      moment.locale("ru");
 
-    visits_post({
-      barber: activeBarber._id,
-      date: dateTime,
-      client: {
-        firstName,
-        secondName,
-        phoneNumber,
-      },
-    })
-      .then((res) => {
-        res.status === 200 &&
-          alert(
-            `Ви успішно записалися на ${moment(res.data.date).format(
-              "DD.MM.YYYY, H:mm"
-            )}`
-          );
+      visits_post({
+        barber: activeBarber._id,
+        date: dateTime,
+        client: {
+          firstName,
+          secondName,
+          phoneNumber,
+        },
       })
-      .catch((err) => console.log(err));
+        .then((res) => {
+          res.status === 200 &&
+            alert(
+              `Ви успішно записалися на ${moment(res.data.date).format(
+                "DD.MM.YYYY, H:mm"
+              )}`
+            );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      alert("Будь ласка заповніть усі поля");
+    }
   };
 
   return (
