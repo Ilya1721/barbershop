@@ -24,7 +24,7 @@ app.use(express.json());
 //Routes
 app.use("/api/services", services);
 app.use("/api/contacts", contacts);
-app.use("/api/workss", works);
+app.use("/api/works", works);
 app.use("/api/barbers", barbers);
 app.use("/api/visits", visits);
 
